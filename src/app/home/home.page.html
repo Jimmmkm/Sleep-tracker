@@ -1,0 +1,90 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar color = "dark">
+    <ion-title >
+      Sleep Tracker
+    </ion-title>
+    <ion-buttons *ngIf="loggedIn==true" slot="end">
+      <ion-button (click)="dismiss()">
+        {{username}}
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+  <ion-header collapse="condense">
+    <ion-toolbar color="dark">
+      <ion-title size="large">Sleep Tracker</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <h2 *ngIf="!loggedIn" class="title">Hello, customer! :)</h2>
+  <ion-item *ngIf="!loggedIn" class="logText">
+    <ion-input class="logInput" [(ngModel)]="username" placeholder="Enter username"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="!loggedIn" color="dark">
+    <ion-button class="logButton" (click)="logIn()">Log in</ion-button>
+  </ion-item>
+
+  <div class="hello" *ngIf="loggedIn">
+    <h2>Welcome! It is now</h2>
+    <p class="clock">{{today | date:'h:mm a'}}</p>
+  </div>
+
+  <ion-card *ngIf="allSleepData.length==0 && loggedIn==true">
+    <ion-card-header>
+      <ion-card-subtitle class="header" color="light">Recent: ???</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      :( Sleeptracker can't find any records!
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="bool==true && loggedIn==true && overnightSleepDataArray.length!=0" color="light">
+    <ion-card-header>
+        <ion-card-subtitle class="header"><ion-icon name="stopwatch"></ion-icon>Recent: Overnight Sleep</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      You have slept {{recent.summaryString()}}
+    </ion-card-content>
+    <ion-footer>
+      <ion-row>
+        <ion-col >
+          <button class="footButton">
+            <ion-icon name="bed"></ion-icon>
+            <div>{{recent.sleepStart | date: 'yyyy/MM/dd h:mm a'}}</div>
+          </button>
+        </ion-col>
+        <ion-col >
+          <button class="footButton">
+            <ion-icon name="walk"></ion-icon>
+            <div>{{recent.sleepEnd | date: 'yyyy/MM/dd h:mm a'}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+
+  <ion-card *ngIf="bool==false && loggedIn==true && sleepinessDataArr.length!=0 && recent!=null" color="light">
+    <ion-card-header>
+        <ion-card-subtitle class="header">
+          <ion-icon name="moon"></ion-icon>
+          Recent: Sleepiness ({{recent.loggedValue}}/7)
+        </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content"> {{allSleepiness[recent.loggedValue]}}</ion-card-content>
+    <ion-card-content class="logTime">
+      <ion-icon name="time"></ion-icon>
+      {{recent.loggedAt | date: 'yyyy/MM/dd h:mm a'}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-buttons *ngIf="loggedIn==true && allSleepData.length!=0">
+    <ion-button class="record" (click)="record()">View all records<ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+  </ion-buttons>
+  
+  <ion-button *ngIf="loggedIn" class="overnight" (click)="overnightSleep()"><ion-icon name="stopwatch-outline"></ion-icon>Log Overnight Sleep</ion-button>
+  <ion-button *ngIf="loggedIn" class="sleepiness" (click)="sleepiness()"><ion-icon name="moon"></ion-icon>Log sleepiness</ion-button>
+</ion-content>

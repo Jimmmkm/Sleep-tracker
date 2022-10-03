@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>recording</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="chevron-back"></ion-icon>
+        BACK
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="clear()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" color="dark">
+  <ion-header collapse="condense">
+    <ion-toolbar color="dark">
+      <ion-title size="large" >Recordings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-button class="recordButtons" color="dark" (click)="filterOvernight()"><ion-icon name="stopwatch-outline"></ion-icon>Filter overnight sleep</ion-button>
+  <ion-button class="recordButtons" color="dark" (click)="filterSleepiness()"><ion-icon name="moon"></ion-icon>Filter sleepiness</ion-button>
+  <ion-button class="recordButtons" color="dark" (click)="reset()"><ion-icon name="flask"></ion-icon>All records</ion-button>
+ 
+
+  <div *ngIf="boolOvernight==false && boolSleep==false && boolCard==false">
+    <ion-card *ngFor="let i of allData.reverse()" color="light">
+      <ion-card-header *ngIf="i.sleepStart!=null">
+        <ion-card-subtitle class="header">Overnight Sleep</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content *ngIf="i.sleepStart!=null" class="content">
+        You have slept {{i.summaryString()}}
+      </ion-card-content>
+      <ion-footer *ngIf="i.sleepStart!=null">
+        <ion-row>
+          <ion-col >
+            <button class="footButton">
+              <ion-icon name="bed"></ion-icon>
+              <div>{{i.sleepStart | date: 'yyyy/MM/dd h:mm a'}}</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button class="footButton">
+              <ion-icon name="walk"></ion-icon>
+              <div>{{i.sleepEnd | date: 'yyyy/MM/dd h:mm a'}}</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+      <ion-card-header *ngIf="i.sleepStart==null">
+        <ion-card-subtitle class="header">Sleepiness ({{i.loggedValue}}/7)</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content *ngIf="i.sleepStart==null" class="content"> {{allSleepiness[i.loggedValue]}}</ion-card-content>
+      <ion-card-content *ngIf="i.sleepStart==null" class="logTime">
+        <ion-icon name="time"></ion-icon>
+        {{recent.loggedAt | date: 'yyyy/MM/dd h:mm a'}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="boolOvernight==true && boolSleep==false">
+    <ion-card *ngFor="let i of overnightSleepDataArray.reverse()" color="light">
+      <ion-card-header>
+        <ion-card-subtitle class="header">Overnight Sleep</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content *ngIf="i.sleepStart!=null" class="content">
+        You have slept {{i.summaryString()}}
+      </ion-card-content>
+      <ion-footer>
+        <ion-row>
+          <ion-col >
+            <button class="footButton">
+              <ion-icon name="bed"></ion-icon>
+              <div>{{i.sleepStart | date: 'yyyy/MM/dd h:mm a'}}</div>
+            </button>
+          </ion-col>
+          <ion-col >
+            <button class="footButton">
+              <ion-icon name="walk"></ion-icon>
+              <div>{{i.sleepEnd | date: 'yyyy/MM/dd h:mm a'}}</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-card>
+  </div>
+
+  <div *ngIf="boolOvernight==false && boolSleep==true">
+    <ion-card *ngFor="let i of sleepinessDataArr.reverse()" color="light">
+      <ion-card-header *ngIf="i.sleepStart==null">
+        <ion-card-subtitle class="header">Sleepiness ({{i.loggedValue}}/7)</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content *ngIf="i.sleepStart==null" class="content"> {{allSleepiness[i.loggedValue]}}</ion-card-content>
+      <ion-card-content *ngIf="i.sleepStart==null" class="logTime">
+        <ion-icon name="time"></ion-icon>
+        {{recent.loggedAt | date: 'yyyy/MM/dd h:mm a'}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

@@ -1,0 +1,44 @@
+.recordButtons {
+    margin-left: 20px;
+    width: 220px;
+    font-size: 15px;
+}
+
+.title {
+    margin-left: 30%;
+}
+
+.text {
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+.header {
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content {
+    margin-top: -5px;
+    font-size: 15px;
+    border-bottom: 1px solid black;
+  }
+
+.footButton {
+    height: 65px;
+    width: 100%;
+    text-align: center;
+    font-size: medium;
+}
+
+.logTime {
+    margin-top: -5px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .delete {
+      margin-top: -10px;
+      margin-left: 10px;
+  }

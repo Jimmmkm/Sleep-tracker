@@ -1,0 +1,145 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+
+.hello {
+  text-align: center;
+  margin-top: 30px;
+  color: white;
+}
+
+.title {
+  margin-top: 50px;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.logText {
+  // margin-top: 100px;
+  width: 90%;
+  margin-top: 10%;
+  margin-left: 15px;
+  align-self: center;
+  border-radius: 10px;
+ 
+}
+
+
+.logInput {
+  height: 70px;
+  font-size: 20px;
+}
+
+.logButton {
+  height: 40px;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 70px;
+}
+
+.clock {
+  font-size: 20px;
+}
+
+.overnight {
+  margin-left: 10px;
+  height: 50px;
+  width:250px;
+}
+
+.sleepiness {
+  margin-left: 10px;
+  width:250px;
+  height: 50px;
+}
+
+.record {
+  width: 250px;
+  margin-left: 80px;
+  margin-top: -10px;
+  font-size:15px
+}
+
+.text {
+  font-size: 10px;
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
+.header {
+  border-bottom: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+.subtitle {
+  // font-family:'Courier New', Courier, monospace;
+  margin-left: -10px;
+}
+
+.footButton {
+  width: 100%;
+  text-align: center;
+  font-size: medium;
+}
+
+
+.content {
+  margin-top: -10px;
+  height: 70px;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+
+.logTime {
+  margin-top: -10px;
+  height:50px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.card {
+  margin-top: -5px;
+  left: 0;
+  right: 0;
+}
+
+.textCard{
+  margin-top: -15px;
+}
+
+
+
+
+
+
+
+

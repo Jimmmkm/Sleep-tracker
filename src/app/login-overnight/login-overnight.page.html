@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "dark">
+    <ion-title>Overnight sleep</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+      <ion-icon name="chevron-back"></ion-icon>
+        BACK
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="dark">
+  <ion-header collapse="condense">
+    <ion-toolbar color="dark">
+      <ion-title size="large" >Overnight Sleep</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <p class="explanation1">Select a time you want to sleep:</p>
+  <ion-item color="dark">
+    <ion-label>Date</ion-label>
+    <ion-datetime class="calendar" displayFormat="MM/DD/YYYY hh:mm" [(ngModel)]="startTime"></ion-datetime>
+  </ion-item>
+  
+  <p class="explanation2">Select a time you want to get up:</p>
+  <ion-item color="dark">
+    <ion-label>Date</ion-label>
+    <ion-datetime class="calendar" displayFormat="MM/DD/YYYY hh:mm" min="2022" max="2099" [(ngModel)]="endTime"></ion-datetime>
+  </ion-item>
+  <ion-button color="success" class="submission" (click)="setDate()">Done</ion-button>
+</ion-content>
